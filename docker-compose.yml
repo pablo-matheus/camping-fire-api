@@ -1,0 +1,27 @@
+version: '3.7'
+services:
+
+  #MySQL
+  db:
+    image: library/mysql:5.7
+    environment:
+      MYSQL_DATABASE: 'camping'
+      MYSQL_ROOT_PASSWORD: '1234'
+    ports:
+      - '3306:3306'
+    networks:
+      - mysql-network
+
+  #phpMyAdmin
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin:latest
+    environment:
+      - PMA_ARBITRARY=1
+    ports:
+      - '83:83'
+    networks:
+      - mysql-network
+
+networks:
+  mysql-network:
+    driver: bridge

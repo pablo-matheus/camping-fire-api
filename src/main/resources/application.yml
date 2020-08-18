@@ -1,0 +1,19 @@
+# Server Configuration
+server:
+  port: 8080
+
+spring:
+  # JPA Configuration
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    open-in-view: true
+    show-sql: true
+  # MySQL Database
+  datasource:
+    username: root
+    password: 1234
+    url: jdbc:mysql://localhost:3306/camping?useTimezone=true&serverTimezone=UTC&useSSL=false
+    initialization-mode: always
+    driver-class-name: com.mysql.jdbc.Driver
