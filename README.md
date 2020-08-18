@@ -1,4 +1,4 @@
-# Altran Challenge
+# Camping
 
 ## Prerequisites
 
