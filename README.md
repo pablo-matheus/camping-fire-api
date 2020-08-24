@@ -36,4 +36,4 @@ $ ./mvnw spring-boot:run
 
 - See the endpoints of the application in http://localhost:8080/swagger-ui.html.
 
-> You can acess http://localhost phpMyAdmin for manage the MySQL Database.
+> You can access http://localhost phpMyAdmin for manage the MySQL Database.
