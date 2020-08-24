@@ -1,4 +1,4 @@
-package br.com.camping.dto;
+package br.com.camping.response;
 
 import br.com.camping.model.User;
 import lombok.AllArgsConstructor;
@@ -10,13 +10,13 @@ import java.io.Serializable;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class UserResponseDTO implements Serializable {
+public class UserResponse implements Serializable {
 
     private Long id;
     private String name;
     private String email;
 
-    public UserResponseDTO (User user) {
+    public UserResponse(User user) {
 
         this.id = user.getId();
         this.name = user.getName();

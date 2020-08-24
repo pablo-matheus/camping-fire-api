@@ -1,8 +1,8 @@
 package br.com.camping.controller;
 
-import br.com.camping.dto.IdResponseDTO;
-import br.com.camping.dto.UserRequestDTO;
-import br.com.camping.dto.UserResponseDTO;
+import br.com.camping.response.IdResponse;
+import br.com.camping.request.UserRequest;
+import br.com.camping.response.UserResponse;
 import br.com.camping.model.User;
 import br.com.camping.service.UserService;
 import lombok.RequiredArgsConstructor;
@@ -20,59 +20,61 @@ import java.util.stream.Collectors;
 @RestController
 @Transactional
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
-@RequestMapping("api/user")
+@RequestMapping("v1/users")
 public class UserController {
 
     private final UserService userService;
 
     @GetMapping
-    public ResponseEntity<List<UserResponseDTO>> listAll() {
+    public ResponseEntity<List<UserResponse>> listAll() {
 
         return ResponseEntity.ok(userService.findAll()
                 .stream()
-                .map(UserResponseDTO::new)
+                .map(UserResponse::new)
                 .collect(Collectors.toList()));
 
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<UserResponseDTO> getById(@PathVariable Long id) {
+    public ResponseEntity<UserResponse> getById(@PathVariable Long id) {
 
-        return ResponseEntity.ok(new UserResponseDTO(userService.findById(id)));
+        return ResponseEntity.ok(new UserResponse(userService.findById(id)));
 
     }
 
     @PostMapping
-    public ResponseEntity<IdResponseDTO> saveUserRequest(
-            @RequestBody @Valid UserRequestDTO userRequestDTO,
+    public ResponseEntity<IdResponse> saveUserRequest(
+            @RequestBody @Valid UserRequest userRequest,
             UriComponentsBuilder uriBuilder)
     {
 
-        User user = userService.saveUserRequest(userRequestDTO);
+        User user = userService.saveUserRequest(userRequest);
         URI uri = uriBuilder.build("api/user");
-        return ResponseEntity.created(uri).body(new IdResponseDTO(user.getId()));
+        return ResponseEntity.created(uri).body(new IdResponse(user.getId()));
 
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<IdResponseDTO> updateUser(
-            @RequestBody @Valid UserRequestDTO userRequestDTO,
+    public ResponseEntity<IdResponse> updateUser(
+            @RequestBody @Valid UserRequest userRequest,
             @PathVariable Long id)
     {
 
-        User user = userService.editUser(userRequestDTO, id);
-        return ResponseEntity.ok(new IdResponseDTO(user.getId()));
+        User user = userService.editUser(userRequest, id);
+        return ResponseEntity.ok(new IdResponse(user.getId()));
 
     }
 
     @DeleteMapping("/{id}")
     //TODO Turn into void, the Id always will be 0
-    public ResponseEntity<IdResponseDTO> delete(@PathVariable Long id) {
+    public ResponseEntity<IdResponse> deleteUser(@PathVariable Long id) {
 
         //TODO Return ResponseEntity.notFound() when user does not located
         userService.delete(id);
-        return ResponseEntity.ok(new IdResponseDTO(id));
+        return ResponseEntity.ok(new IdResponse(id));
 
     }
+
+    //TODO Get user campings /users/1/campings/1
 
 }

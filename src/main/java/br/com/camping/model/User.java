@@ -1,6 +1,6 @@
 package br.com.camping.model;
 
-import br.com.camping.dto.UserRequestDTO;
+import br.com.camping.request.UserRequest;
 import lombok.Data;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
@@ -9,7 +9,7 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
 
-@Entity(name = "tbuser")
+@Entity(name = "users")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -23,6 +23,7 @@ public class User implements Serializable {
     @Column(length = 45, nullable = false)
     private String name;
 
+    //TODO Name unique constraint
     @Column(length = 50, nullable = false, unique = true)
     private String email;
 
@@ -30,12 +31,12 @@ public class User implements Serializable {
     private String password;
 
     @OneToMany(mappedBy = "user")
-    private List<Camp> camps;
+    private List<Camping> campings;
 
-    public User(UserRequestDTO userRequestDTO) {
-        this.name = userRequestDTO.getName();
-        this.email = userRequestDTO.getEmail();
-        this.password = userRequestDTO.getPassword();
+    public User(UserRequest userRequest) {
+        this.name = userRequest.getName();
+        this.email = userRequest.getEmail();
+        this.password = userRequest.getPassword();
     }
 
 }

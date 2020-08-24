@@ -1,6 +1,6 @@
 package br.com.camping.service;
 
-import br.com.camping.dto.UserRequestDTO;
+import br.com.camping.request.UserRequest;
 import br.com.camping.model.User;
 import br.com.camping.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -33,15 +33,15 @@ public class UserService {
 
     }
 
-    public User saveUserRequest(UserRequestDTO userRequestDTO) {
+    public User saveUserRequest(UserRequest userRequest) {
 
-        return this.save(new User(userRequestDTO));
+        return this.save(new User(userRequest));
 
     }
 
-    public User editUser(UserRequestDTO userRequestDTO, Long id) {
+    public User editUser(UserRequest userRequest, Long id) {
 
-        User user = new User(userRequestDTO);
+        User user = new User(userRequest);
         user.setId(id);
         return this.save(user);
 

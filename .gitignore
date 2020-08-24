@@ -9,3 +9,6 @@
 # Deploy
 target
 out
+
+# Logs
+logs/

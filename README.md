@@ -1,4 +1,4 @@
-# Camping
+# Camping Fire
 
 ## Prerequisites
 

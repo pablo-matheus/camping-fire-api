@@ -1,4 +1,4 @@
-package br.com.camping.dto;
+package br.com.camping.request;
 
 import br.com.camping.model.User;
 import lombok.AllArgsConstructor;
@@ -14,7 +14,7 @@ import java.io.Serializable;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class UserRequestDTO implements Serializable {
+public class UserRequest implements Serializable {
 
     @NotBlank(message = "Name is required")
     private String name;

@@ -1,6 +1,6 @@
 package br.com.camping.model;
 
-import br.com.camping.dto.CampRequestDTO;
+import br.com.camping.request.CampingRequest;
 import br.com.camping.enums.State;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -9,11 +9,11 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import java.io.Serializable;
 
-@Entity(name = "tbcamp")
+@Entity(name = "campings")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Camp implements Serializable {
+public class Camping implements Serializable {
 
     private static final String STATES = "'AC', 'AL', 'AP', 'AM', 'BA', 'CE', " +
             "'DF', 'ES', 'GO', 'MA', 'MT', 'MS', 'MG', 'PA', 'PB', 'PR', 'PE', 'PI', " +
@@ -49,14 +49,14 @@ public class Camp implements Serializable {
     @JoinColumn(name = "id_user", nullable = false, foreignKey = @ForeignKey(name = "fk_user_camp"))
     private User user;
 
-    public Camp(CampRequestDTO campRequestDTO) {
+    public Camping(CampingRequest campingRequest) {
 
-        this.name = campRequestDTO.getName();
-        this.state = campRequestDTO.getState();
-        this.city = campRequestDTO.getCity();
-        this.description = campRequestDTO.getDescription();
-        this.contact = campRequestDTO.getContact();
-        this.image = campRequestDTO.getImage();
+        this.name = campingRequest.getName();
+        this.state = campingRequest.getState();
+        this.city = campingRequest.getCity();
+        this.description = campingRequest.getDescription();
+        this.contact = campingRequest.getContact();
+        this.image = campingRequest.getImage();
 
     }
 
