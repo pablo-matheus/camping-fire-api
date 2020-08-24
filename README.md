@@ -32,6 +32,8 @@ $ docker-compose up
 $ ./mvnw spring-boot:run
 ```
 
+> If you are using **Windows** execute ```.\mvnw clean package``` in the terminal.
+
 - See the endpoints of the application in http://localhost:8080/swagger-ui.html.
 
 > You can acess http://localhost phpMyAdmin for manage the MySQL Database.

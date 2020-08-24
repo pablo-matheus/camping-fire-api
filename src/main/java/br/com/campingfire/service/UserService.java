@@ -15,6 +15,8 @@ public class UserService {
 
     private final UserRepository userRepository;
 
+    //TODO Change User JPA Object to UserDTO
+
     public List<User> findAll() {
 
         return userRepository.findAll();
