@@ -1,7 +1,7 @@
-package br.com.camping.model;
+package br.com.campingfire.model;
 
-import br.com.camping.request.CampingRequest;
-import br.com.camping.enums.State;
+import br.com.campingfire.request.CampingRequest;
+import br.com.campingfire.enums.State;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

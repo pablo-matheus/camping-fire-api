@@ -1,4 +1,4 @@
-package br.com.camping;
+package br.com.campingfire;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -6,18 +6,18 @@ import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 
 @SpringBootApplication
-public class CampingApplication extends SpringBootServletInitializer {
+public class CampingFireApplication extends SpringBootServletInitializer {
 
     @Override
     protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
 
-        return application.sources(CampingApplication.class);
+        return application.sources(CampingFireApplication.class);
 
     }
 
     public static void main(String[] args) {
 
-        SpringApplication.run(CampingApplication.class, args);
+        SpringApplication.run(CampingFireApplication.class, args);
 
     }
 

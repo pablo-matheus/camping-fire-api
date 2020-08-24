@@ -1,9 +1,9 @@
-package br.com.camping.service;
+package br.com.campingfire.service;
 
-import br.com.camping.request.CampingRequest;
-import br.com.camping.enums.State;
-import br.com.camping.model.Camping;
-import br.com.camping.repository.CampingRepository;
+import br.com.campingfire.request.CampingRequest;
+import br.com.campingfire.enums.State;
+import br.com.campingfire.model.Camping;
+import br.com.campingfire.repository.CampingRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,6 +17,8 @@ public class CampingService {
     private final CampingRepository campingRepository;
 
     private final UserService userService;
+
+    //TODO Change Camping JPA Object to CampingDTO
 
     public List<Camping> findAll() {
 

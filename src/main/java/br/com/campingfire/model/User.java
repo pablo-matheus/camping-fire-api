@@ -1,6 +1,6 @@
-package br.com.camping.model;
+package br.com.campingfire.model;
 
-import br.com.camping.request.UserRequest;
+import br.com.campingfire.request.UserRequest;
 import lombok.Data;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;

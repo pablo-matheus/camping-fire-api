@@ -1,4 +1,4 @@
-package br.com.camping.enums;
+package br.com.campingfire.enums;
 
 public enum State {
 

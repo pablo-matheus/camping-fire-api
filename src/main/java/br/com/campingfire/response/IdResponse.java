@@ -1,4 +1,4 @@
-package br.com.camping.response;
+package br.com.campingfire.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

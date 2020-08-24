@@ -1,4 +1,4 @@
-package br.com.camping.dto;
+package br.com.campingfire.dto;
 
 public class UserDTO {
 

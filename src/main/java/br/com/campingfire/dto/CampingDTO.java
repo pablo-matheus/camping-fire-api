@@ -1,6 +1,6 @@
-package br.com.camping.dto;
+package br.com.campingfire.dto;
 
-import br.com.camping.enums.State;
+import br.com.campingfire.enums.State;
 
 public class CampingDTO {
 

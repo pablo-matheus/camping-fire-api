@@ -1,7 +1,7 @@
-package br.com.camping.repository;
+package br.com.campingfire.repository;
 
-import br.com.camping.enums.State;
-import br.com.camping.model.Camping;
+import br.com.campingfire.enums.State;
+import br.com.campingfire.model.Camping;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

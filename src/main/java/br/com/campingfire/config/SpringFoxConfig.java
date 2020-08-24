@@ -1,4 +1,4 @@
-package br.com.camping.config;
+package br.com.campingfire.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -21,7 +21,7 @@ public class SpringFoxConfig {
 
         return new Docket(DocumentationType.SWAGGER_2)
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("br.com.camping.controller"))
+                .apis(RequestHandlerSelectors.basePackage("br.com.campingfire.controller"))
                 .paths(PathSelectors.any())
                 .build();
 

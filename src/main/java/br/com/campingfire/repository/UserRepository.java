@@ -1,6 +1,6 @@
-package br.com.camping.repository;
+package br.com.campingfire.repository;
 
-import br.com.camping.model.User;
+import br.com.campingfire.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

@@ -1,8 +1,8 @@
-package br.com.camping.service;
+package br.com.campingfire.service;
 
-import br.com.camping.request.UserRequest;
-import br.com.camping.model.User;
-import br.com.camping.repository.UserRepository;
+import br.com.campingfire.request.UserRequest;
+import br.com.campingfire.model.User;
+import br.com.campingfire.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

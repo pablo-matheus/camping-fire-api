@@ -1,11 +1,11 @@
-package br.com.camping.controller;
+package br.com.campingfire.controller;
 
-import br.com.camping.request.CampingRequest;
-import br.com.camping.response.CampingResponse;
-import br.com.camping.response.IdResponse;
-import br.com.camping.enums.State;
-import br.com.camping.model.Camping;
-import br.com.camping.service.CampingService;
+import br.com.campingfire.request.CampingRequest;
+import br.com.campingfire.response.CampingResponse;
+import br.com.campingfire.response.IdResponse;
+import br.com.campingfire.enums.State;
+import br.com.campingfire.model.Camping;
+import br.com.campingfire.service.CampingService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -31,6 +31,8 @@ public class CampingController {
             @RequestParam(required = false) State state,
             @RequestParam(required = false) String city)
     {
+
+        //TODO Refactor conditions
 
         if (state != null && city != null) {
 

@@ -1,6 +1,6 @@
-package br.com.camping.response;
+package br.com.campingfire.response;
 
-import br.com.camping.model.User;
+import br.com.campingfire.model.User;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

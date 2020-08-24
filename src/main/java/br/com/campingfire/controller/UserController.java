@@ -1,10 +1,10 @@
-package br.com.camping.controller;
+package br.com.campingfire.controller;
 
-import br.com.camping.response.IdResponse;
-import br.com.camping.request.UserRequest;
-import br.com.camping.response.UserResponse;
-import br.com.camping.model.User;
-import br.com.camping.service.UserService;
+import br.com.campingfire.response.IdResponse;
+import br.com.campingfire.request.UserRequest;
+import br.com.campingfire.response.UserResponse;
+import br.com.campingfire.model.User;
+import br.com.campingfire.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
