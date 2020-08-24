@@ -32,7 +32,7 @@ public class CampingController {
             @RequestParam(required = false) String city)
     {
 
-        //TODO Refactor conditions
+        //TODO Refactor conditionals
 
         if (state != null && city != null) {
 

@@ -5,7 +5,7 @@ services:
   db:
     image: library/mysql:5.7
     environment:
-      MYSQL_DATABASE: 'camping'
+      MYSQL_DATABASE: 'camping-fire'
       MYSQL_ROOT_PASSWORD: '1234'
     ports:
       - '3306:3306'
@@ -13,12 +13,15 @@ services:
       - mysql-network
 
   #phpMyAdmin
-  phpmyadmin:
-    image: phpmyadmin/phpmyadmin:latest
+  app:
+    image: phpmyadmin/phpmyadmin:5.0.2
     environment:
       - PMA_ARBITRARY=1
+      - PMA_HOST=db
+      - PMA_USER=root
+      - PMA_PASSWORD=1234
     ports:
-      - '83:83'
+      - '80:80'
     networks:
       - mysql-network
 

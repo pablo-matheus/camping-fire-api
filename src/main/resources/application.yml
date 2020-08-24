@@ -14,6 +14,6 @@ spring:
   datasource:
     username: root
     password: 1234
-    url: jdbc:mysql://localhost:3306/camping?useTimezone=true&serverTimezone=UTC&useSSL=false
+    url: jdbc:mysql://localhost:3306/camping-fire?useTimezone=true&serverTimezone=UTC&useSSL=false
     initialization-mode: always
     driver-class-name: com.mysql.jdbc.Driver
