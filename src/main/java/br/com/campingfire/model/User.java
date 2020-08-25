@@ -13,6 +13,7 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Table(uniqueConstraints = @UniqueConstraint(columnNames = {"email"}, name = "uc_user_email"))
 public class User implements Serializable {
 
     @Id
@@ -23,8 +24,7 @@ public class User implements Serializable {
     @Column(length = 45, nullable = false)
     private String name;
 
-    //TODO Name unique constraint
-    @Column(length = 50, nullable = false, unique = true)
+    @Column(length = 50, nullable = false)
     private String email;
 
     @Column(length = 16, nullable = false)

@@ -15,14 +15,14 @@ public class ImageResponse implements Serializable {
     private Long id;
     private String name;
     private String type;
-    private byte[] pictureBytes;
+    private byte[] file;
 
     public ImageResponse(Image image) {
 
         this.id = image.getId();
         this.name = image.getName();
         this.type = image.getType();
-        this.pictureBytes = image.getPictureBytes();
+        this.file = image.getFile();
 
     }
 

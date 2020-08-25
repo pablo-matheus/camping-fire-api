@@ -25,17 +25,17 @@ public class Image implements Serializable {
     private String type;
 
     @Column(length = 1000, nullable = false)
-    private byte[] pictureBytes;
+    private byte[] file;
 
     @ManyToOne
     @JoinColumn(name = "id_camping", nullable = false, foreignKey = @ForeignKey(name = "fk_campings_images"))
     private Camping camping;
 
-    public Image(String name, String type, byte[] pictureBytes) {
+    public Image(String name, String type, byte[] file) {
 
         this.name = name;
         this.type = type;
-        this.pictureBytes = pictureBytes;
+        this.file = file;
 
     }
 
