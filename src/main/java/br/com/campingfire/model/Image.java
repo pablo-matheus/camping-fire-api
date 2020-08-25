@@ -18,10 +18,10 @@ public class Image implements Serializable {
     @Column(length = 12)
     private Long id;
 
-    @Column(length = 30, nullable = false)
+    @Column(length = 200, nullable = false)
     private String name;
 
-    @Column(length = 25, nullable = false)
+    @Column(length = 60, nullable = false)
     private String type;
 
     @Column(length = 1000, nullable = false)
