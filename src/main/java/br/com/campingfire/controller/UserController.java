@@ -49,8 +49,9 @@ public class UserController {
     {
 
         User user = userService.saveUserRequest(userRequest);
-        URI uri = uriBuilder.build("api/user");
-        return ResponseEntity.created(uri).body(new IdResponse(user.getId()));
+
+        return ResponseEntity.created(uriBuilder.build("v1/users"))
+                .body(new IdResponse(user.getId()));
 
     }
 

@@ -30,8 +30,6 @@ public class CampingRequest implements Serializable {
     @Min(value = 10, message = "Contact must be at least 10 characters")
     private Long contact;
 
-    private String image;
-
     @NotNull(message = "User id is required")
     private Long userId;
 

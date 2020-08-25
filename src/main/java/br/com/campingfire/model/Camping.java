@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 
 @Entity(name = "campings")
 @Data
@@ -41,13 +42,12 @@ public class Camping implements Serializable {
     @Column(length = 11, nullable = false)
     private Long contact;
 
-    /* TODO This can be a new table (one to many) */
-    @Column(length = 150)
-    private String image;
-
     @ManyToOne
-    @JoinColumn(name = "id_user", nullable = false, foreignKey = @ForeignKey(name = "fk_user_camp"))
+    @JoinColumn(name = "id_user", nullable = false, foreignKey = @ForeignKey(name = "fk_users_campings"))
     private User user;
+
+    @OneToMany(mappedBy = "camping")
+    private List<Image> images;
 
     public Camping(CampingRequest campingRequest) {
 
@@ -56,7 +56,6 @@ public class Camping implements Serializable {
         this.city = campingRequest.getCity();
         this.description = campingRequest.getDescription();
         this.contact = campingRequest.getContact();
-        this.image = campingRequest.getImage();
 
     }
 

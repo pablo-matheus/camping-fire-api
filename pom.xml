@@ -8,12 +8,14 @@
     <artifactId>camping-fire-api</artifactId>
     <version>0.0.1</version>
     <packaging>jar</packaging>
+
+    <name>camping-fire</name>
+    <description>Demo camping project</description>
+
     <properties>
-        <java.version>1.8</java.version>
-        <maven.compiler.source>${java.version}</maven.compiler.source>
-        <maven.compiler.target>${java.version}</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <java.version>1.8</java.version>
     </properties>
 
     <!-- Spring Version -->

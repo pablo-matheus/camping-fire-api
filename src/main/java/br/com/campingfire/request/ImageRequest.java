@@ -1,4 +1,4 @@
-package br.com.campingfire.response;
+package br.com.campingfire.request;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -9,7 +9,7 @@ import java.io.Serializable;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class IdResponse implements Serializable {
+public class ImageRequest implements Serializable {
 
     private Long id;
 

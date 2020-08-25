@@ -82,8 +82,9 @@ public class CampingController {
     {
 
         Camping camping = campingService.saveCampRequest(campingRequest);
-        URI uri = uriBuilder.build("api/camp");
-        return ResponseEntity.created(uri).body(new IdResponse(camping.getId()));
+
+        return ResponseEntity.created(uriBuilder.build("v1/campings"))
+                .body(new IdResponse(camping.getId()));
 
     }
 

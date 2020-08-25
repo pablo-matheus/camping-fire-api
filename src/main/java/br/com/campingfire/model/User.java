@@ -30,7 +30,7 @@ public class User implements Serializable {
     @Column(length = 16, nullable = false)
     private String password;
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "user")/*TODO Change to users?*/
     private List<Camping> campings;
 
     public User(UserRequest userRequest) {

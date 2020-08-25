@@ -10,7 +10,6 @@ public class CampingDTO {
     private String city;
     private String description;
     private Long contact;
-    private String image;
     private UserDTO user;
 
 }

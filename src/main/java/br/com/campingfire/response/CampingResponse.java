@@ -19,7 +19,6 @@ public class CampingResponse implements Serializable {
     private String city;
     private String description;
     private Long contact;
-    private String image;
 
     public CampingResponse(Camping camping) {
 
@@ -29,7 +28,6 @@ public class CampingResponse implements Serializable {
         this.city = camping.getCity();
         this.description = camping.getDescription();
         this.contact = camping.getContact();
-        this.image = camping.getImage();
 
     }
 
