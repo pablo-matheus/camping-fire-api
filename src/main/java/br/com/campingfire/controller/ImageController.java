@@ -31,6 +31,8 @@ public class ImageController {
             UriComponentsBuilder uriBuilder) throws IOException
     {
 
+        //TODO Limit accepted data types
+
         Image image = imageService.saveRequest(file, id);
         return ResponseEntity.created(uriBuilder.build("v1/images"))
                 .body(new IdResponse(image.getId()));
@@ -43,5 +45,7 @@ public class ImageController {
         return ResponseEntity.ok(new ImageResponse(imageService.findById(id)));
 
     }
+
+    //TODO Implement other methods
 
 }

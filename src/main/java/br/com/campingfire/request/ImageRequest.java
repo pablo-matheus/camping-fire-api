@@ -11,6 +11,8 @@ import java.io.Serializable;
 @NoArgsConstructor
 public class ImageRequest implements Serializable {
 
+    //TODO Finish this class
+
     private Long id;
 
 }
