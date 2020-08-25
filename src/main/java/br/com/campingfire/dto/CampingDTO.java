@@ -2,7 +2,9 @@ package br.com.campingfire.dto;
 
 import br.com.campingfire.enums.State;
 
-public class CampingDTO {
+import java.io.Serializable;
+
+public class CampingDTO implements Serializable {
 
     private Long id;
     private String name;

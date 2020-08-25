@@ -1,22 +1,27 @@
 # Server Configuration
 server:
-  port: 8080
+  port: 8081
 
 spring:
   # JPA Configuration
   jpa:
     hibernate:
       ddl-auto: create-drop
-    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    database-platform: org.hibernate.dialect.H2Dialect
     open-in-view: true
     show-sql: true
+  # H2 Configuration
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
   # Database Configuration
   datasource:
-    username: root
-    password: 1234
-    url: jdbc:mysql://localhost:3306/camping-fire?useTimezone=true&serverTimezone=UTC&useSSL=false
+    username: sa
+    password:
+    url: jdbc:h2:mem:testdb
     initialization-mode: always
-    driver-class-name: com.mysql.jdbc.Driver
+    driver-class-name: org.h2.Driver
   # Servlet Configuration
   servlet:
     multipart:

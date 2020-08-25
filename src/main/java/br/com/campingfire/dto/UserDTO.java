@@ -1,6 +1,8 @@
 package br.com.campingfire.dto;
 
-public class UserDTO {
+import java.io.Serializable;
+
+public class UserDTO implements Serializable {
 
     private Long id;
     private String name;
