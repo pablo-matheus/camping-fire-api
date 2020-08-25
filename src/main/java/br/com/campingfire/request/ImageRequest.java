@@ -12,6 +12,7 @@ import java.io.Serializable;
 public class ImageRequest implements Serializable {
 
     //TODO Finish this class
+    //TODO Implement bean validation
 
     private Long id;
 

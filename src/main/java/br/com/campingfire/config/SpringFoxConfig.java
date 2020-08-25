@@ -7,9 +7,13 @@ import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
+import springfox.documentation.service.ApiInfo;
+import springfox.documentation.service.Contact;
 import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
+
+import java.util.Collections;
 
 @Configuration
 @EnableSwagger2
@@ -23,7 +27,8 @@ public class SpringFoxConfig {
                 .select()
                 .apis(RequestHandlerSelectors.basePackage("br.com.campingfire.controller"))
                 .paths(PathSelectors.any())
-                .build();
+                .build()
+                .apiInfo(this.apiInfo());
 
     }
 
@@ -44,6 +49,20 @@ public class SpringFoxConfig {
             }
 
         };
+
+    }
+
+    public ApiInfo apiInfo() {
+
+        return new ApiInfo(
+                "Camping Fire API",
+                "It project belongs to Camping Fire App.",
+                "v0.0.1",
+                "https://github.com/pablo-matheus/camping-fire/blob/master/README.md",
+                new Contact("Pablo Matheus", "https://github.com/pablo-matheus/", "pablo.lima.araujo@gmail.com"),
+                "MIT License",
+                "https://github.com/pablo-matheus/camping-fire/blob/master/LICENSE.md",
+                Collections.emptyList());
 
     }
 
