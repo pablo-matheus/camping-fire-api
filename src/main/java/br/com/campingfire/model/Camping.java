@@ -38,11 +38,11 @@ public class Camping implements Serializable {
     @Column(length = 300)
     private String description;
 
-    /* TODO This can be a new table (one to many)*/
+    //TODO This can be a new table (one to many)
     @Column(length = 11, nullable = false)
     private Long contact;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_user", nullable = false, foreignKey = @ForeignKey(name = "fk_users_campings"))
     private User user;
 

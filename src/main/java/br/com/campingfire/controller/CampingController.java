@@ -105,12 +105,10 @@ public class CampingController {
 
     @ApiOperation("Delete Camping")
     @DeleteMapping("/{id}")
-    //TODO Turn into void, the Id always will be 0
-    public ResponseEntity<IdResponse> deleteCamping(@PathVariable Long id) {
+    public void deleteCamping(@PathVariable Long id) {
 
         //TODO Return ResponseEntity.notFound() when camp does not located
         campingService.delete(id);
-        return ResponseEntity.ok(new IdResponse(id));
 
     }
 

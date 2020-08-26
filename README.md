@@ -43,9 +43,10 @@ $ ./mvnw spring-boot:run
 
 > If you are using **Windows** execute ```.\mvnw spring-boot:run``` in the terminal.
 
-- See the endpoints of the application in http://localhost:8080/swagger-ui.html.
+- Application endpoints documentation in http://localhost:8080/swagger-ui.html.
 
-> You can access http://localhost:8080/h2-console for manage the H2 Database.
+> You can access http://localhost:8080/h2-console for manage the H2 Database, 
+use ```jdbc:h2:mem:camping-fire``` in JDBC URL field.
 
 ### Running with Dev Profile
 
@@ -67,14 +68,14 @@ $ ./mvnw spring-boot:run
 
 > If you are using **Windows** execute ```.\mvnw spring-boot:run``` in the terminal.
 
-- See the endpoints of the application in http://localhost:8080/swagger-ui.html.
+- Application endpoints documentation in http://localhost:8080/swagger-ui.html.
 
 > You can access http://localhost phpMyAdmin for manage the MySQL Database.
 
 ## Author
 
-- Pablo Matheus | https://www.linkedin.com/in/pablo-lima-araujo
+Pablo Matheus - https://www.linkedin.com/in/pablo-lima-araujo
 
 ## License
 
-- MIT License, see more information in [LICENSE.md]().
+MIT License, see more information in [LICENSE.md](https://github.com/pablo-matheus/camping-fire-api/blob/master/LICENSE.md).

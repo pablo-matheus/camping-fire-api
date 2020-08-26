@@ -24,13 +24,13 @@ public class Image implements Serializable {
     @Column(length = 60, nullable = false)
     private String type;
 
-    @Column(length = 100000, nullable = false)
+    @Column(length = 100000000, nullable = false)
     private byte[] file;
 
     @Column(length = 100, nullable = false)
     private Long size;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_camping", nullable = false, foreignKey = @ForeignKey(name = "fk_campings_images"))
     private Camping camping;
 

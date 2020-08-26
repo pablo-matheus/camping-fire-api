@@ -6,6 +6,8 @@ import java.io.Serializable;
 
 public class CampingDTO implements Serializable {
 
+    //TODO Start using campingDTO
+
     private Long id;
     private String name;
     private State state;

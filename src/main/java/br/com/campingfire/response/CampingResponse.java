@@ -2,6 +2,7 @@ package br.com.campingfire.response;
 
 import br.com.campingfire.enums.State;
 import br.com.campingfire.model.Camping;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -13,11 +14,22 @@ import java.io.Serializable;
 @NoArgsConstructor
 public class CampingResponse implements Serializable {
 
+    @ApiModelProperty(value = "Camping ID", required = true)
     private Long id;
+
+    @ApiModelProperty(value = "Camping Name", required = true)
     private String name;
+
+    @ApiModelProperty(value = "Camping State", required = true)
     private State state;
+
+    @ApiModelProperty(value = "Camping City", required = true)
     private String city;
+
+    @ApiModelProperty(value = "Camping Description")
     private String description;
+
+    @ApiModelProperty(value = "Camping Contact", required = true)
     private Long contact;
 
     public CampingResponse(Camping camping) {

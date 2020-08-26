@@ -72,12 +72,10 @@ public class UserController {
 
     @ApiOperation("Delete User")
     @DeleteMapping("/{id}")
-    //TODO Turn into void, the Id always will be 0
-    public ResponseEntity<IdResponse> deleteUser(@PathVariable Long id) {
+    public void deleteUser(@PathVariable Long id) {
 
         //TODO Return ResponseEntity.notFound() when user does not located
         userService.delete(id);
-        return ResponseEntity.ok(new IdResponse(id));
 
     }
 
