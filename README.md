@@ -4,19 +4,34 @@
 
 ```
 Java Development Kit 8
-Docker and Docker Compose
+Docker and Docker Compose (Optional)
 Browser
 ```
 
 ## Technologies
 
 ```
-Spring Boot
-Swagger
+Java 8
 Apache Maven 3
+Spring
+Swagger
+MySQL Database 5.7
+H2 Database
 ```
 
 ## Instructions
+
+### Setting Profiles
+
+- To set a profile you must change the active profile ```src/main/resources/application.yml``` 
+to one of these values ```dev```, ```prod```, ```test```. Example:
+
+```yaml
+# Setting Up Dev Profile Configuration
+spring:
+  profiles:
+    active: dev
+```
 
 ### Running with Test Profile
 
@@ -33,6 +48,8 @@ $ ./mvnw spring-boot:run
 > You can access http://localhost:8080/h2-console for manage the H2 Database.
 
 ### Running with Dev Profile
+
+> The Dev Profile requires Docker and Docker Compose.
 
 - Start the MySQL Database with Docker Compose:
 
@@ -53,3 +70,11 @@ $ ./mvnw spring-boot:run
 - See the endpoints of the application in http://localhost:8080/swagger-ui.html.
 
 > You can access http://localhost phpMyAdmin for manage the MySQL Database.
+
+## Author
+
+- Pablo Matheus | https://www.linkedin.com/in/pablo-lima-araujo
+
+## License
+
+- MIT License, see more information in [LICENSE.md]().
