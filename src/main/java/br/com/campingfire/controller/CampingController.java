@@ -6,6 +6,7 @@ import br.com.campingfire.response.IdResponse;
 import br.com.campingfire.enums.State;
 import br.com.campingfire.model.Camping;
 import br.com.campingfire.service.CampingService;
+import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -14,7 +15,6 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 import javax.transaction.Transactional;
 import javax.validation.Valid;
-import java.net.URI;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -26,6 +26,7 @@ public class CampingController {
 
     private final CampingService campingService;
 
+    @ApiOperation("Retrieve Camping List")
     @GetMapping
     public ResponseEntity<List<CampingResponse>> listAll(
             @RequestParam(required = false) State state,
@@ -68,6 +69,7 @@ public class CampingController {
 
     }
 
+    @ApiOperation("Retrieve Camping")
     @GetMapping("/{id}")
     public ResponseEntity<CampingResponse> getById(@PathVariable Long id) {
 
@@ -75,6 +77,7 @@ public class CampingController {
 
     }
 
+    @ApiOperation("Submit New Camping")
     @PostMapping
     public ResponseEntity<IdResponse> saveCampingRequest(
             @RequestBody @Valid CampingRequest campingRequest,
@@ -88,6 +91,7 @@ public class CampingController {
 
     }
 
+    @ApiOperation("Edit Camping")
     @PutMapping("/{id}")
     public ResponseEntity<IdResponse> updateCamping(
             @RequestBody @Valid CampingRequest campingRequest,
@@ -99,6 +103,7 @@ public class CampingController {
 
     }
 
+    @ApiOperation("Delete Camping")
     @DeleteMapping("/{id}")
     //TODO Turn into void, the Id always will be 0
     public ResponseEntity<IdResponse> deleteCamping(@PathVariable Long id) {

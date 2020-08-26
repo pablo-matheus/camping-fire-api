@@ -16,6 +16,7 @@ public class ImageResponse implements Serializable {
     private String name;
     private String type;
     private byte[] file;
+    private Long size;
 
     public ImageResponse(Image image) {
 
@@ -23,6 +24,7 @@ public class ImageResponse implements Serializable {
         this.name = image.getName();
         this.type = image.getType();
         this.file = image.getFile();
+        this.size = image.getSize();
 
     }
 

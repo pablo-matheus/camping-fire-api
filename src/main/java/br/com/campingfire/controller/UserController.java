@@ -5,6 +5,7 @@ import br.com.campingfire.request.UserRequest;
 import br.com.campingfire.response.UserResponse;
 import br.com.campingfire.model.User;
 import br.com.campingfire.service.UserService;
+import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -13,7 +14,6 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 import javax.transaction.Transactional;
 import javax.validation.Valid;
-import java.net.URI;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -25,6 +25,7 @@ public class UserController {
 
     private final UserService userService;
 
+    @ApiOperation("Retrieve User List")
     @GetMapping
     public ResponseEntity<List<UserResponse>> listAll() {
 
@@ -35,6 +36,7 @@ public class UserController {
 
     }
 
+    @ApiOperation("Retrieve User")
     @GetMapping("/{id}")
     public ResponseEntity<UserResponse> getById(@PathVariable Long id) {
 
@@ -42,6 +44,7 @@ public class UserController {
 
     }
 
+    @ApiOperation("Submit New User")
     @PostMapping
     public ResponseEntity<IdResponse> saveUserRequest(
             @RequestBody @Valid UserRequest userRequest,
@@ -55,6 +58,7 @@ public class UserController {
 
     }
 
+    @ApiOperation("Edit User")
     @PutMapping("/{id}")
     public ResponseEntity<IdResponse> updateUser(
             @RequestBody @Valid UserRequest userRequest,
@@ -66,6 +70,7 @@ public class UserController {
 
     }
 
+    @ApiOperation("Delete User")
     @DeleteMapping("/{id}")
     //TODO Turn into void, the Id always will be 0
     public ResponseEntity<IdResponse> deleteUser(@PathVariable Long id) {

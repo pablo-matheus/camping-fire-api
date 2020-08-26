@@ -24,18 +24,22 @@ public class Image implements Serializable {
     @Column(length = 60, nullable = false)
     private String type;
 
-    @Column(length = 1000, nullable = false)
+    @Column(length = 100000, nullable = false)
     private byte[] file;
+
+    @Column(length = 100, nullable = false)
+    private Long size;
 
     @ManyToOne
     @JoinColumn(name = "id_camping", nullable = false, foreignKey = @ForeignKey(name = "fk_campings_images"))
     private Camping camping;
 
-    public Image(String name, String type, byte[] file) {
+    public Image(String name, String type, byte[] file, Long size) {
 
         this.name = name;
         this.type = type;
         this.file = file;
+        this.size = size;
 
     }
 

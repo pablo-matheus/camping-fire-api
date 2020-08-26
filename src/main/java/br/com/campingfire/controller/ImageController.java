@@ -4,6 +4,7 @@ import br.com.campingfire.model.Image;
 import br.com.campingfire.response.IdResponse;
 import br.com.campingfire.response.ImageResponse;
 import br.com.campingfire.service.ImageService;
+import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +25,7 @@ public class ImageController {
 
     private final ImageService imageService;
 
+    @ApiOperation("Submit New Image")
     @PostMapping
     public ResponseEntity<IdResponse> uploadImage(
             @RequestParam("file") MultipartFile file,
@@ -39,6 +41,7 @@ public class ImageController {
 
     }
 
+    @ApiOperation("Retrieve Image")
     @GetMapping("/{id}")
     public ResponseEntity<ImageResponse> getById(@PathVariable Long id) {
 
