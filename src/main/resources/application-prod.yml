@@ -2,6 +2,12 @@
 server:
   port: 8080
 
+# Logs Configuration
+logging:
+  file:
+    path: /var/camping-fire/logs/
+    name: /var/camping-fire/logs/camping-fire.log
+
 spring:
   # JPA Configuration
   jpa:
