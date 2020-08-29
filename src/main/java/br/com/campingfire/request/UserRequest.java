@@ -20,6 +20,7 @@ public class UserRequest implements Serializable {
     @Size(max = 45, message = "Name must be a maximum of 45 characters")
     private String name;
 
+    //TODO Example of filling?
     @ApiModelProperty(value = "User Email", required = true)
     @NotBlank(message = "Email address is required")
     @Size(min = 12, max = 50, message = "Email must be between 12 and 50 characters")

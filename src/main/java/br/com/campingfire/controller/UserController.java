@@ -25,6 +25,8 @@ public class UserController {
 
     private final UserService userService;
 
+    //TODO Improve validation messages in response JSON
+
     @ApiOperation("Retrieve User List")
     @GetMapping
     public ResponseEntity<List<UserResponse>> listAll() {
@@ -60,21 +62,22 @@ public class UserController {
 
     @ApiOperation("Edit User")
     @PutMapping("/{id}")
-    public ResponseEntity<IdResponse> updateUser(
+    public ResponseEntity<UserResponse> updateUser(
             @RequestBody @Valid UserRequest userRequest,
             @PathVariable Long id)
     {
 
-        User user = userService.editUser(userRequest, id);
-        return ResponseEntity.ok(new IdResponse(user.getId()));
+        return ResponseEntity.ok(new UserResponse(userService.editUser(userRequest, id)));
 
     }
 
+    //TODO Don't delete user if he has campings registered
     @ApiOperation("Delete User")
     @DeleteMapping("/{id}")
     public void deleteUser(@PathVariable Long id) {
 
         //TODO Return ResponseEntity.notFound() when user does not located
+        //TODO return response entity
         userService.delete(id);
 
     }

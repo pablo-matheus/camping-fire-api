@@ -19,4 +19,7 @@ public interface CampingRepository extends JpaRepository<Camping, Long> {
     /** Query to find all camps searching by state and city */
     List<Camping> findAllByStateAndCity(State state, String city);
 
+    /** Query to find all camps of an user*/
+    List<Camping> findAllByUserId(Long id);
+
 }

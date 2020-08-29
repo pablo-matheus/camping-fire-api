@@ -26,6 +26,8 @@ public class CampingController {
 
     private final CampingService campingService;
 
+    //TODO Improve validation messages in response JSON
+
     @ApiOperation("Retrieve Camping List")
     @GetMapping
     public ResponseEntity<List<CampingResponse>> listAll(
@@ -93,13 +95,12 @@ public class CampingController {
 
     @ApiOperation("Edit Camping")
     @PutMapping("/{id}")
-    public ResponseEntity<IdResponse> updateCamping(
+    public ResponseEntity<CampingResponse> updateCamping(
             @RequestBody @Valid CampingRequest campingRequest,
             @PathVariable Long id)
     {
 
-        Camping camping = campingService.editCamp(campingRequest, id);
-        return ResponseEntity.ok(new IdResponse(camping.getId()));
+        return ResponseEntity.ok(new CampingResponse(campingService.editCamp(campingRequest, id)));
 
     }
 
@@ -108,6 +109,7 @@ public class CampingController {
     public void deleteCamping(@PathVariable Long id) {
 
         //TODO Return ResponseEntity.notFound() when camp does not located
+        //TODO Return response entity
         campingService.delete(id);
 
     }

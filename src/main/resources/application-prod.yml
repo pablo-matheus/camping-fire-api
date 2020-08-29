@@ -6,16 +6,16 @@ spring:
   # JPA Configuration
   jpa:
     hibernate:
-      ddl-auto: create-drop
+      ddl-auto: update
     database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
     open-in-view: true
     show-sql: true
   # Database Configuration
   datasource:
     username: root
-    password: 1234
-    url: jdbc:mysql://localhost:3306/camping-fire?useTimezone=true&serverTimezone=UTC&useSSL=false
-    initialization-mode: always
+    password: camping-fire
+    url: jdbc:mysql://35.198.4.20:3306/camping_fire?createDatabaseIfNotExist=true&useTimezone=true&serverTimezone=UTC&useSSL=false
+    #initialization-mode: always
     driver-class-name: com.mysql.jdbc.Driver
   # Servlet Configuration
   servlet:
