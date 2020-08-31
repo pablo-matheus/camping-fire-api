@@ -1,6 +1,7 @@
 package br.com.campingfire.model;
 
-import br.com.campingfire.request.CampingRequest;
+import br.com.campingfire.request.CampingEditRequest;
+import br.com.campingfire.request.CampingSubmitRequest;
 import br.com.campingfire.enums.State;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -49,13 +50,23 @@ public class Camping implements Serializable {
     @OneToMany(mappedBy = "camping")
     private List<Image> images;
 
-    public Camping(CampingRequest campingRequest) {
+    public Camping(CampingSubmitRequest campingSubmitRequest) {
 
-        this.name = campingRequest.getName();
-        this.state = campingRequest.getState();
-        this.city = campingRequest.getCity();
-        this.description = campingRequest.getDescription();
-        this.contact = campingRequest.getContact();
+        this.name = campingSubmitRequest.getName();
+        this.state = campingSubmitRequest.getState();
+        this.city = campingSubmitRequest.getCity();
+        this.description = campingSubmitRequest.getDescription();
+        this.contact = campingSubmitRequest.getContact();
+
+    }
+
+    public Camping(CampingEditRequest campingEditRequest) {
+
+        this.name = campingEditRequest.getName();
+        this.state = campingEditRequest.getState();
+        this.city = campingEditRequest.getCity();
+        this.description = campingEditRequest.getDescription();
+        this.contact = campingEditRequest.getContact();
 
     }
 

@@ -1,6 +1,6 @@
 package br.com.campingfire.service;
 
-import br.com.campingfire.request.UserRequest;
+import br.com.campingfire.request.UserSubmitRequest;
 import br.com.campingfire.model.User;
 import br.com.campingfire.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -35,15 +35,15 @@ public class UserService {
 
     }
 
-    public User saveUserRequest(UserRequest userRequest) {
+    public User saveUserRequest(UserSubmitRequest userSubmitRequest) {
 
-        return this.save(new User(userRequest));
+        return this.save(new User(userSubmitRequest));
 
     }
 
-    public User editUser(UserRequest userRequest, Long id) {
+    public User editUser(UserSubmitRequest userSubmitRequest, Long id) {
 
-        User user = new User(userRequest);
+        User user = new User(userSubmitRequest);
         user.setId(id);
         return this.save(user);
 

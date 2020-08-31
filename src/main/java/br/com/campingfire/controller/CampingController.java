@@ -1,6 +1,7 @@
 package br.com.campingfire.controller;
 
-import br.com.campingfire.request.CampingRequest;
+import br.com.campingfire.request.CampingEditRequest;
+import br.com.campingfire.request.CampingSubmitRequest;
 import br.com.campingfire.response.CampingResponse;
 import br.com.campingfire.response.IdResponse;
 import br.com.campingfire.enums.State;
@@ -82,11 +83,11 @@ public class CampingController {
     @ApiOperation("Submit New Camping")
     @PostMapping
     public ResponseEntity<IdResponse> saveCampingRequest(
-            @RequestBody @Valid CampingRequest campingRequest,
+            @RequestBody @Valid CampingSubmitRequest campingSubmitRequest,
             UriComponentsBuilder uriBuilder)
     {
 
-        Camping camping = campingService.saveCampRequest(campingRequest);
+        Camping camping = campingService.saveCampRequest(campingSubmitRequest);
 
         return ResponseEntity.created(uriBuilder.build("v1/campings"))
                 .body(new IdResponse(camping.getId()));
@@ -96,11 +97,11 @@ public class CampingController {
     @ApiOperation("Edit Camping")
     @PutMapping("/{id}")
     public ResponseEntity<CampingResponse> updateCamping(
-            @RequestBody @Valid CampingRequest campingRequest,
+            @RequestBody @Valid CampingEditRequest campingEditRequest,
             @PathVariable Long id)
     {
 
-        return ResponseEntity.ok(new CampingResponse(campingService.editCamp(campingRequest, id)));
+        return ResponseEntity.ok(new CampingResponse(campingService.editCamp(campingEditRequest, id)));
 
     }
 

@@ -9,6 +9,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -45,7 +47,27 @@ public class ImageService {
                 ImageUtils.decompressBytes(retrievedImage.get().getFile()),
                 retrievedImage.get().getSize());
 
+        //TODO ImageUtils must be @Autowired?
+
+        image.setId(id);
+
         return image;
+
+    }
+
+    public List<Image> findAllByCampingId(Long id) {
+
+        List<Image> imageList = new ArrayList();
+
+        for (Image image : imageRepository.findAllByCampingId(id)) {
+
+            byte[] decompressedBytes = ImageUtils.decompressBytes(image.getFile());
+            image.setFile(decompressedBytes);
+
+        }
+
+        //TODO Decompress all images
+        return imageRepository.findAllByCampingId(id);
 
     }
 

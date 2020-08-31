@@ -9,7 +9,7 @@ import java.io.Serializable;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class ImageRequest implements Serializable {
+public class ImageSubmitRequest implements Serializable {
 
     //TODO Finish this class
     //TODO Implement bean validation

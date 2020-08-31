@@ -1,6 +1,7 @@
 package br.com.campingfire.service;
 
-import br.com.campingfire.request.CampingRequest;
+import br.com.campingfire.request.CampingEditRequest;
+import br.com.campingfire.request.CampingSubmitRequest;
 import br.com.campingfire.enums.State;
 import br.com.campingfire.model.Camping;
 import br.com.campingfire.repository.CampingRepository;
@@ -56,19 +57,19 @@ public class CampingService {
 
     }
 
-    public Camping saveCampRequest(CampingRequest campingRequest) {
+    public Camping saveCampRequest(CampingSubmitRequest campingSubmitRequest) {
 
-        Camping camping = new Camping(campingRequest);
-        camping.setUser(userService.findById(campingRequest.getUserId()));
+        Camping camping = new Camping(campingSubmitRequest);
+        camping.setUser(userService.findById(campingSubmitRequest.getUserId()));
         return campingRepository.save(camping);
 
     }
 
-    public Camping editCamp(CampingRequest campingRequest, Long id) {
+    public Camping editCamp(CampingEditRequest campingEditRequest, Long id) {
 
-        Camping camping = new Camping(campingRequest);
+        Camping camping = new Camping(campingEditRequest);
         camping.setId(id);
-        camping.setUser(userService.findById(campingRequest.getUserId()));
+        camping.setUser(userService.findById(campingEditRequest.getUserId()));
 
         return this.save(camping);
 

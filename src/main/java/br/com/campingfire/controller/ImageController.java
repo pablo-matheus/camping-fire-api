@@ -15,6 +15,8 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 import javax.transaction.Transactional;
 import java.io.IOException;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Slf4j
 @RestController
@@ -46,6 +48,17 @@ public class ImageController {
     public ResponseEntity<ImageResponse> getById(@PathVariable Long id) {
 
         return ResponseEntity.ok(new ImageResponse(imageService.findById(id)));
+
+    }
+
+    @ApiOperation("Retrieve Camping Image List")
+    @GetMapping("/campings/{id}")
+    public ResponseEntity<List<ImageResponse>> ListAllByCampingId(@PathVariable Long id) {
+
+        return ResponseEntity.ok(imageService.findAllByCampingId(id)
+                .stream()
+                .map(ImageResponse::new)
+                .collect(Collectors.toList()));
 
     }
 

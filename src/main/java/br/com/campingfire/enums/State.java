@@ -5,7 +5,8 @@ public enum State {
     //TODO Transform this in a reference table
 
     /** States of Brazil */
-    SP, MG, RJ, RO, AC, AM, RR, PA, AP, TO, MA, PI, CE,
-    RN, PB, PE, AL, SE, BA, ES, PR, SC, RS, MS, MT, GO
+    AC, AL, AM, AP, BA, CE, DF, ES, GO,
+    MA, MG, MS, MT, PA, PB, PE, PI, PR,
+    RJ, RN, RO, RR, RS, SC, SE, SP, TO
 
 }

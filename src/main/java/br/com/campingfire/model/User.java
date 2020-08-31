@@ -1,6 +1,6 @@
 package br.com.campingfire.model;
 
-import br.com.campingfire.request.UserRequest;
+import br.com.campingfire.request.UserSubmitRequest;
 import lombok.Data;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
@@ -33,10 +33,10 @@ public class User implements Serializable {
     @OneToMany(mappedBy = "user")
     private List<Camping> campings;
 
-    public User(UserRequest userRequest) {
-        this.name = userRequest.getName();
-        this.email = userRequest.getEmail();
-        this.password = userRequest.getPassword();
+    public User(UserSubmitRequest userSubmitRequest) {
+        this.name = userSubmitRequest.getName();
+        this.email = userSubmitRequest.getEmail();
+        this.password = userSubmitRequest.getPassword();
     }
 
 }

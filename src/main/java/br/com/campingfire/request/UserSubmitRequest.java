@@ -13,7 +13,7 @@ import java.io.Serializable;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class UserRequest implements Serializable {
+public class UserSubmitRequest implements Serializable {
 
     @ApiModelProperty(value = "User Name", required = true)
     @NotBlank(message = "Name is required")

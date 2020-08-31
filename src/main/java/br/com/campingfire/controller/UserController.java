@@ -1,7 +1,7 @@
 package br.com.campingfire.controller;
 
 import br.com.campingfire.response.IdResponse;
-import br.com.campingfire.request.UserRequest;
+import br.com.campingfire.request.UserSubmitRequest;
 import br.com.campingfire.response.UserResponse;
 import br.com.campingfire.model.User;
 import br.com.campingfire.service.UserService;
@@ -49,11 +49,11 @@ public class UserController {
     @ApiOperation("Submit New User")
     @PostMapping
     public ResponseEntity<IdResponse> saveUserRequest(
-            @RequestBody @Valid UserRequest userRequest,
+            @RequestBody @Valid UserSubmitRequest userSubmitRequest,
             UriComponentsBuilder uriBuilder)
     {
 
-        User user = userService.saveUserRequest(userRequest);
+        User user = userService.saveUserRequest(userSubmitRequest);
 
         return ResponseEntity.created(uriBuilder.build("v1/users"))
                 .body(new IdResponse(user.getId()));
@@ -63,11 +63,11 @@ public class UserController {
     @ApiOperation("Edit User")
     @PutMapping("/{id}")
     public ResponseEntity<UserResponse> updateUser(
-            @RequestBody @Valid UserRequest userRequest,
+            @RequestBody @Valid UserSubmitRequest userSubmitRequest,
             @PathVariable Long id)
     {
 
-        return ResponseEntity.ok(new UserResponse(userService.editUser(userRequest, id)));
+        return ResponseEntity.ok(new UserResponse(userService.editUser(userSubmitRequest, id)));
 
     }
 
