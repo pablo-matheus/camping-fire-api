@@ -10,6 +10,7 @@ import br.com.campingfire.service.CampingService;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
@@ -107,11 +108,11 @@ public class CampingController {
 
     @ApiOperation("Delete Camping")
     @DeleteMapping("/{id}")
-    public void deleteCamping(@PathVariable Long id) {
+    public ResponseEntity<Integer> deleteCamping(@PathVariable Long id) {
 
         //TODO Return ResponseEntity.notFound() when camp does not located
-        //TODO Return response entity
         campingService.delete(id);
+        return new ResponseEntity<>(HttpStatus.OK);
 
     }
 

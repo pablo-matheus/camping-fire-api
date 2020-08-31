@@ -8,6 +8,7 @@ import br.com.campingfire.service.UserService;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
@@ -74,11 +75,11 @@ public class UserController {
     //TODO Don't delete user if he has campings registered
     @ApiOperation("Delete User")
     @DeleteMapping("/{id}")
-    public void deleteUser(@PathVariable Long id) {
+    public ResponseEntity<Integer> deleteUser(@PathVariable Long id) {
 
         //TODO Return ResponseEntity.notFound() when user does not located
-        //TODO return response entity
         userService.delete(id);
+        return new ResponseEntity<>(HttpStatus.OK);
 
     }
 
