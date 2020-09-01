@@ -47,7 +47,7 @@ public class CampingService {
 
     public Camping findById(Long id) {
 
-        return campingRepository.findById(id).orElse(null);
+        return campingRepository.findById(id).get();
 
     }
 

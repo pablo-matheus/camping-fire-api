@@ -12,4 +12,6 @@ public interface ImageRepository extends JpaRepository<Image, Long> {
     /** Query to find all images of a camp */
     List<Image> findAllByCampingId(Long id);
 
+    boolean existsByCampingId(Long id);
+
 }

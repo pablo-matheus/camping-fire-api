@@ -48,4 +48,10 @@ public class ImageService {
 
     }
 
+    public boolean existsByCampingId(Long id) {
+
+        return imageRepository.existsByCampingId(id);
+
+    }
+
 }

@@ -7,6 +7,7 @@ import br.com.campingfire.response.IdResponse;
 import br.com.campingfire.enums.State;
 import br.com.campingfire.model.Camping;
 import br.com.campingfire.service.CampingService;
+import br.com.campingfire.service.ImageService;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +29,8 @@ public class CampingController {
 
     private final CampingService campingService;
 
+    private final ImageService imageService;
+
     //TODO Improve validation messages in response JSON
 
     @ApiOperation("Retrieve Camping List")
@@ -38,38 +41,51 @@ public class CampingController {
     {
 
         //TODO Refactor conditionals
+        //TODO Remove imageURL and imageService
 
         if (state != null && city != null) {
 
-            return ResponseEntity.ok(campingService.findAllByStateAndCity(state, city)
-                .stream()
-                .map(CampingResponse::new)
-                .collect(Collectors.toList()));
+            List<CampingResponse> campingList = campingService.findAllByStateAndCity(state, city)
+                    .stream()
+                    .map(CampingResponse::new)
+                    .collect(Collectors.toList());
+
+            campingList.stream().filter(camping -> imageService.existsByCampingId(camping.getId())).forEach(camping -> camping.setImageUrl(imageService.findAllByCampingId(camping.getId()).get(0).getUrl()));
+            return ResponseEntity.ok(campingList);
 
         }
 
         if (state != null) {
 
-            return ResponseEntity.ok(campingService.findAllByState(state)
+            List<CampingResponse> campingList = campingService.findAllByState(state)
                     .stream()
                     .map(CampingResponse::new)
-                    .collect(Collectors.toList()));
+                    .collect(Collectors.toList());
+
+            campingList.stream().filter(camping -> imageService.existsByCampingId(camping.getId())).forEach(camping -> camping.setImageUrl(imageService.findAllByCampingId(camping.getId()).get(0).getUrl()));
+            return ResponseEntity.ok(campingList);
 
         }
 
         if (city != null) {
 
-            return ResponseEntity.ok(campingService.findAllByCity(city)
+            List<CampingResponse> campingList = campingService.findAllByCity(city)
                     .stream()
                     .map(CampingResponse::new)
-                    .collect(Collectors.toList()));
+                    .collect(Collectors.toList());
+
+            campingList.stream().filter(camping -> imageService.existsByCampingId(camping.getId())).forEach(camping -> camping.setImageUrl(imageService.findAllByCampingId(camping.getId()).get(0).getUrl()));
+            return ResponseEntity.ok(campingList);
 
         }
 
-        return ResponseEntity.ok(campingService.findAll()
+        List<CampingResponse> campingList = campingService.findAll()
                 .stream()
                 .map(CampingResponse::new)
-                .collect(Collectors.toList()));
+                .collect(Collectors.toList());
+
+        campingList.stream().filter(camping -> imageService.existsByCampingId(camping.getId())).forEach(camping -> camping.setImageUrl(imageService.findAllByCampingId(camping.getId()).get(0).getUrl()));
+        return ResponseEntity.ok(campingList);
 
     }
 

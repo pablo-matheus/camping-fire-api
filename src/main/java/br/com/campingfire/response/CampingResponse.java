@@ -35,6 +35,9 @@ public class CampingResponse implements Serializable {
     @ApiModelProperty(value = "Camping Contact", required = true)
     private Long contact;
 
+    @ApiModelProperty(value = "Camping Image URL", required = true)
+    private String imageUrl;
+
     public CampingResponse(Camping camping) {
 
         this.id = camping.getId();

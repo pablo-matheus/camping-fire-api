@@ -3,6 +3,7 @@ package br.com.campingfire.model;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -11,6 +12,7 @@ import java.io.Serializable;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@ToString
 public class Image implements Serializable {
 
     @Id
