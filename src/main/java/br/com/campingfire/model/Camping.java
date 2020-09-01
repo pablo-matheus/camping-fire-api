@@ -36,6 +36,9 @@ public class Camping implements Serializable {
     @Column(length = 25, nullable = false)
     private String city;
 
+    @Column(length = 80, nullable = false)
+    private String address;
+
     @Column(length = 300)
     private String description;
 
@@ -55,6 +58,7 @@ public class Camping implements Serializable {
         this.name = campingSubmitRequest.getName();
         this.state = campingSubmitRequest.getState();
         this.city = campingSubmitRequest.getCity();
+        this.address = campingSubmitRequest.getAddress();
         this.description = campingSubmitRequest.getDescription();
         this.contact = campingSubmitRequest.getContact();
 
@@ -65,6 +69,7 @@ public class Camping implements Serializable {
         this.name = campingEditRequest.getName();
         this.state = campingEditRequest.getState();
         this.city = campingEditRequest.getCity();
+        this.address = campingEditRequest.getAddress();
         this.description = campingEditRequest.getDescription();
         this.contact = campingEditRequest.getContact();
 

@@ -2,16 +2,16 @@ package br.com.campingfire.service;
 
 import br.com.campingfire.model.Image;
 import br.com.campingfire.repository.ImageRepository;
-import br.com.campingfire.utils.ImageUtils;
+import com.google.cloud.storage.BlobInfo;
+import com.google.cloud.storage.Storage;
+import com.google.cloud.storage.StorageOptions;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
@@ -21,52 +21,29 @@ public class ImageService {
 
     private final CampingService campingService;
 
+    private static Storage storage = StorageOptions.getDefaultInstance().getService();
+
     public Image saveRequest(MultipartFile file, Long campingId) throws IOException {
 
-        //TODO Refactor this method removing constructor (reduces the necessity of further adding new variables)
-        Image image = new Image(
-                file.getOriginalFilename(),
-                file.getContentType(),
-                ImageUtils.compressBytes(file.getBytes()),
-                file.getSize());
+        BlobInfo blobInfo = storage.create(
+                BlobInfo.newBuilder("camping-fire", file.getOriginalFilename()).build(),
+                file.getBytes(),
+                Storage.BlobTargetOption.predefinedAcl(Storage.PredefinedAcl.PUBLIC_READ));
 
+        Image image = new Image(file.getOriginalFilename(), blobInfo.getMediaLink());
         image.setCamping(campingService.findById(campingId));
-
         return imageRepository.save(image);
 
     }
 
     public Image findById(Long id) {
 
-        Optional<Image> retrievedImage = imageRepository.findById(id);
-
-        //TODO Refactor this method removing constructor (reduces the necessity of further adding new variables)
-        Image image = new Image(
-                retrievedImage.get().getName(),
-                retrievedImage.get().getType(),
-                ImageUtils.decompressBytes(retrievedImage.get().getFile()),
-                retrievedImage.get().getSize());
-
-        //TODO ImageUtils must be @Autowired?
-
-        image.setId(id);
-
-        return image;
+        return imageRepository.findById(id).get();
 
     }
 
     public List<Image> findAllByCampingId(Long id) {
 
-        List<Image> imageList = new ArrayList();
-
-        for (Image image : imageRepository.findAllByCampingId(id)) {
-
-            byte[] decompressedBytes = ImageUtils.decompressBytes(image.getFile());
-            image.setFile(decompressedBytes);
-
-        }
-
-        //TODO Decompress all images
         return imageRepository.findAllByCampingId(id);
 
     }

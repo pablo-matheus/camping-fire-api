@@ -57,19 +57,31 @@ public class CampingService {
 
     }
 
-    public Camping saveCampRequest(CampingSubmitRequest campingSubmitRequest) {
+    public Camping saveCampRequest(CampingSubmitRequest campingSubmitRequest, Long userId) {
+
+        //TODO Remove this
+        if (userId == null) {
+            userId = 1L;
+        }
 
         Camping camping = new Camping(campingSubmitRequest);
-        camping.setUser(userService.findById(campingSubmitRequest.getUserId()));
+        camping.setUser(userService.findById(userId));
         return campingRepository.save(camping);
 
     }
 
-    public Camping editCamp(CampingEditRequest campingEditRequest, Long id) {
+    public Camping editCamp(CampingEditRequest campingEditRequest, Long id, Long userId) {
+
+        //TODO Remove this
+        if (userId == null) {
+
+            userId = 1L;
+
+        }
 
         Camping camping = new Camping(campingEditRequest);
         camping.setId(id);
-        camping.setUser(userService.findById(campingEditRequest.getUserId()));
+        camping.setUser(userService.findById(userId));
 
         return this.save(camping);
 

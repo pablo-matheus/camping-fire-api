@@ -21,25 +21,17 @@ public class Image implements Serializable {
     @Column(length = 200, nullable = false)
     private String name;
 
-    @Column(length = 60, nullable = false)
-    private String type;
-
-    @Column(length = 100000000, nullable = false)
-    private byte[] file;
-
-    @Column(length = 100, nullable = false)
-    private Long size;
+    @Column(length = 300, nullable = false)
+    private String url;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_camping", nullable = false, foreignKey = @ForeignKey(name = "fk_campings_images"))
     private Camping camping;
 
-    public Image(String name, String type, byte[] file, Long size) {
+    public Image(String name, String url) {
 
         this.name = name;
-        this.type = type;
-        this.file = file;
-        this.size = size;
+        this.url = url;
 
     }
 

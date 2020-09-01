@@ -26,6 +26,9 @@ public class CampingResponse implements Serializable {
     @ApiModelProperty(value = "Camping City", required = true)
     private String city;
 
+    @ApiModelProperty(value = "Camping Address", required = true)
+    private String address;
+
     @ApiModelProperty(value = "Camping Description")
     private String description;
 
@@ -38,6 +41,7 @@ public class CampingResponse implements Serializable {
         this.name = camping.getName();
         this.state = camping.getState();
         this.city = camping.getCity();
+        this.address = camping.getAddress();
         this.description = camping.getDescription();
         this.contact = camping.getContact();
 

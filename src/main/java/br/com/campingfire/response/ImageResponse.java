@@ -19,22 +19,14 @@ public class ImageResponse implements Serializable {
     @ApiModelProperty(value = "Image Name", required = true)
     private String name;
 
-    @ApiModelProperty(value = "Image Type", required = true)
-    private String type;
-
-    @ApiModelProperty(value = "Image File", required = true)
-    private byte[] file;
-
-    @ApiModelProperty(value = "Image Size", required = true)
-    private Long size;
+    @ApiModelProperty(value = "Image URL", required = true)
+    private String url;
 
     public ImageResponse(Image image) {
 
         this.id = image.getId();
         this.name = image.getName();
-        this.type = image.getType();
-        this.file = image.getFile();
-        this.size = image.getSize();
+        this.url = image.getUrl();
 
     }
 

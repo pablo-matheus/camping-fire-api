@@ -29,6 +29,11 @@ public class CampingSubmitRequest implements Serializable {
     @Size(max = 25, message = "City must be at maximum 25 characters")
     private String city;
 
+    @ApiModelProperty(value = "Camping Address", required = true)
+    @NotBlank(message = "Address is required")
+    @Size(max = 80, message = "Address must be at maximum 25 characters")
+    private String address;
+
     @ApiModelProperty(value = "Camping Description")
     @Size(max = 300, message = "Description must be at maximum 25 characters")
     private String description;
@@ -37,10 +42,5 @@ public class CampingSubmitRequest implements Serializable {
     @NotNull(message = "Contact is required")
 //    @Size(min = 10, message = "Contact must be at least 10 characters")
     private Long contact;
-
-    @ApiModelProperty(value = "User ID", required = true)
-    @NotNull(message = "User ID is required")
-//    @Size(max = 12, message = "User ID must be at maximum 12 characters")
-    private Long userId;
 
 }

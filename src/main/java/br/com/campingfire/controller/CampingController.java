@@ -84,11 +84,12 @@ public class CampingController {
     @ApiOperation("Submit New Camping")
     @PostMapping
     public ResponseEntity<IdResponse> saveCampingRequest(
+            @RequestParam(required = false) Long userId,
             @RequestBody @Valid CampingSubmitRequest campingSubmitRequest,
             UriComponentsBuilder uriBuilder)
     {
 
-        Camping camping = campingService.saveCampRequest(campingSubmitRequest);
+        Camping camping = campingService.saveCampRequest(campingSubmitRequest, userId);
 
         return ResponseEntity.created(uriBuilder.build("v1/campings"))
                 .body(new IdResponse(camping.getId()));
@@ -99,10 +100,11 @@ public class CampingController {
     @PutMapping("/{id}")
     public ResponseEntity<CampingResponse> updateCamping(
             @RequestBody @Valid CampingEditRequest campingEditRequest,
-            @PathVariable Long id)
+            @PathVariable Long id,
+            @RequestParam(required = false) Long userId)
     {
 
-        return ResponseEntity.ok(new CampingResponse(campingService.editCamp(campingEditRequest, id)));
+        return ResponseEntity.ok(new CampingResponse(campingService.editCamp(campingEditRequest, id, userId)));
 
     }
 
