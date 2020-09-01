@@ -18,6 +18,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 import javax.transaction.Transactional;
 import javax.validation.Valid;
+import java.net.URI;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -106,9 +107,8 @@ public class CampingController {
     {
 
         Camping camping = campingService.saveCampRequest(campingSubmitRequest, userId);
-
-        return ResponseEntity.created(uriBuilder.build("v1/campings"))
-                .body(new IdResponse(camping.getId()));
+        URI uri = uriBuilder.path("v1/campings/{id}").buildAndExpand(camping.getId()).toUri();
+        return ResponseEntity.created(uri).body(new IdResponse(camping.getId()));
 
     }
 

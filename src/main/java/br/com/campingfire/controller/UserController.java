@@ -15,6 +15,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 import javax.transaction.Transactional;
 import javax.validation.Valid;
+import java.net.URI;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -55,9 +56,8 @@ public class UserController {
     {
 
         User user = userService.saveUserRequest(userSubmitRequest);
-
-        return ResponseEntity.created(uriBuilder.build("v1/users"))
-                .body(new IdResponse(user.getId()));
+        URI uri = uriBuilder.path("v1/users/{id}").buildAndExpand(user.getId()).toUri();
+        return ResponseEntity.created(uri).body(new IdResponse(user.getId()));
 
     }
 
