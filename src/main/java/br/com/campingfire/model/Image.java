@@ -1,14 +1,13 @@
 package br.com.campingfire.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity(name = "images")
-@Data
+@Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 public class Image implements Serializable {
@@ -25,7 +24,7 @@ public class Image implements Serializable {
     private String url;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_camping", nullable = false, foreignKey = @ForeignKey(name = "fk_campings_images"))
+    @JoinColumn(name = "id_camping", nullable = false, foreignKey = @ForeignKey(name = "fk_camping_image"))
     private Camping camping;
 
     public Image(String name, String url) {

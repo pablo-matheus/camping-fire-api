@@ -1,19 +1,19 @@
 package br.com.campingfire.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.List;
+import java.util.Set;
 
-@Entity(name = "profiles")
-@Data
+@Entity(name = "roles")
+@Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Profile implements Serializable, GrantedAuthority {
+public class Role implements Serializable, GrantedAuthority {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,8 +23,8 @@ public class Profile implements Serializable, GrantedAuthority {
     @Column(length = 25, nullable = false)
     private String name;
 
-    @ManyToMany
-    private List<User> users;
+    @ManyToMany(mappedBy = "roles")
+    private Set<User> users;
 
     @Override
     public String getAuthority() {

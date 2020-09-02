@@ -1,9 +1,8 @@
 package br.com.campingfire.model;
 
 import br.com.campingfire.request.UserSubmitRequest;
-import lombok.Data;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -11,9 +10,11 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.List;
+import java.util.Set;
 
 @Entity(name = "users")
-@Data
+@Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(uniqueConstraints = @UniqueConstraint(columnNames = {"email"}, name = "uc_user_email"))
@@ -30,11 +31,18 @@ public class User implements Serializable, UserDetails {
     @Column(length = 50, nullable = false)
     private String email;
 
-    @Column(length = 16, nullable = false)
+    @Column(length = 60, nullable = false)
     private String password;
 
     @ManyToMany(fetch = FetchType.EAGER)
-    private List<Profile> profiles;
+    @JoinTable(
+        name = "users_roles",
+        joinColumns = @JoinColumn(name = "id_user"),
+        inverseJoinColumns = @JoinColumn(name = "id_role"),
+        foreignKey = @ForeignKey(name = "fk_user_role"),
+        inverseForeignKey = @ForeignKey(name = "fk_role_user")
+    )
+    private Set<Role> roles;
 
     @OneToMany(mappedBy = "user")
     private List<Camping> campings;
@@ -47,12 +55,17 @@ public class User implements Serializable, UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return null;
+        return this.roles;
     }
 
     @Override
     public String getUsername() {
         return this.email;
+    }
+
+    @Override
+    public String getPassword() {
+        return this.password;
     }
 
     @Override

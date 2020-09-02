@@ -3,16 +3,15 @@ package br.com.campingfire.model;
 import br.com.campingfire.request.CampingEditRequest;
 import br.com.campingfire.request.CampingSubmitRequest;
 import br.com.campingfire.enums.State;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
 
 @Entity(name = "campings")
-@Data
+@Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 public class Camping implements Serializable {
@@ -47,7 +46,7 @@ public class Camping implements Serializable {
     private Long contact;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_user", nullable = false, foreignKey = @ForeignKey(name = "fk_users_campings"))
+    @JoinColumn(name = "id_user", nullable = false, foreignKey = @ForeignKey(name = "fk_user_camping"))
     private User user;
 
     @OneToMany(mappedBy = "camping")

@@ -5,6 +5,7 @@ import br.com.campingfire.model.User;
 import br.com.campingfire.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -14,6 +15,8 @@ import java.util.List;
 public class UserService {
 
     private final UserRepository userRepository;
+
+    private final PasswordEncoder passwordEncoder;
 
     //TODO Change User JPA Object to UserDTO
 
@@ -31,7 +34,7 @@ public class UserService {
 
     public User findByEmail(String email) {
 
-        return userRepository.findByEmail(email);
+        return userRepository.findByEmail(email).get();
 
     }
 
@@ -43,7 +46,9 @@ public class UserService {
 
     public User saveUserRequest(UserSubmitRequest userSubmitRequest) {
 
-        return this.save(new User(userSubmitRequest));
+        User user = new User(userSubmitRequest);
+        user.setPassword(passwordEncoder.encode(userSubmitRequest.getPassword()));
+        return this.save(user);
 
     }
 

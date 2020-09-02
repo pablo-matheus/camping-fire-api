@@ -3,13 +3,12 @@ package br.com.campingfire.response;
 import br.com.campingfire.enums.State;
 import br.com.campingfire.model.Camping;
 import io.swagger.annotations.ApiModelProperty;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.io.Serializable;
 
-@Data
+@Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 public class CampingResponse implements Serializable {
