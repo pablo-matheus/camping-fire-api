@@ -1,3 +1,8 @@
+# JWT Configuration
+jwt:
+  secret: Ek2mRrmnvVxWEpBKKeQedQ2Mb8ZOzofwJ1qOYGPyTmCwEM7OKnTwavzUyuRS60C
+  expiration: 86400000
+
 # Server Configuration
 server:
   port: 8080
