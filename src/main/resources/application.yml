@@ -1,4 +1,4 @@
 # Profiles Configuration
 spring:
   profiles:
-    active: prod
+    active: test
