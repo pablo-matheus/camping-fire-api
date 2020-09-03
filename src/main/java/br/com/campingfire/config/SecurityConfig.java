@@ -1,7 +1,9 @@
 package br.com.campingfire.config;
 
 import br.com.campingfire.filter.AuthenticationRequestFilter;
+import br.com.campingfire.repository.UserRepository;
 import br.com.campingfire.service.AuthenticationService;
+import br.com.campingfire.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -25,6 +27,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     private final AuthenticationService authenticationService;
 
+    private final UserRepository userRepository;
+
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 
@@ -36,22 +40,27 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
 
         http.authorizeRequests()
-                .antMatchers(HttpMethod.GET, "campings").permitAll()
-                .antMatchers(HttpMethod.GET, "campings/*").permitAll()
-                .antMatchers(HttpMethod.GET, "images").permitAll()
-                .antMatchers(HttpMethod.GET, "images/*").permitAll()
-                .antMatchers(HttpMethod.POST, "auth").permitAll()
+                .antMatchers(HttpMethod.GET, "/v1/campings").permitAll()
+                .antMatchers(HttpMethod.GET, "/v1/campings/*").permitAll()
+                .antMatchers(HttpMethod.GET, "/v1/images").permitAll()
+                .antMatchers(HttpMethod.GET, "/v1/images/*").permitAll()
+                .antMatchers(HttpMethod.POST, "/auth").permitAll()
                 .anyRequest().authenticated()
                 .and().csrf().disable()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-                .and().addFilterBefore(new AuthenticationRequestFilter(), UsernamePasswordAuthenticationFilter.class);
+                .and().addFilterBefore(new AuthenticationRequestFilter(authenticationService, userRepository), UsernamePasswordAuthenticationFilter.class);
 
     }
 
     @Override
     public void configure(WebSecurity web) throws Exception {
 
-        super.configure(web);
+        web.ignoring().antMatchers(
+                "/**.html",
+                "/v2/api-docs",
+                "/webjars/**",
+                "/configuration/**",
+                "/swagger-resources/**");
 
     }
 

@@ -5,14 +5,17 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import springfox.documentation.builders.ParameterBuilder;
 import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
+import springfox.documentation.schema.ModelRef;
 import springfox.documentation.service.ApiInfo;
 import springfox.documentation.service.Contact;
 import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
+import java.util.Arrays;
 import java.util.Collections;
 
 @Configuration
@@ -28,6 +31,14 @@ public class SwaggerConfig {
                 .apis(RequestHandlerSelectors.basePackage("br.com.campingfire.controller"))
                 .paths(PathSelectors.any())
                 .build()
+                .globalOperationParameters(Arrays.asList(
+                        new ParameterBuilder()
+                                .name("Authorization")
+                                .description("JWT Header")
+                                .modelRef(new ModelRef("string"))
+                                .parameterType("header")
+                                .required(false)
+                                .build()))
                 .apiInfo(this.apiInfo());
 
     }

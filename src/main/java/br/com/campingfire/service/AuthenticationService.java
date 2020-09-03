@@ -2,6 +2,7 @@ package br.com.campingfire.service;
 
 import br.com.campingfire.model.User;
 import br.com.campingfire.repository.UserRepository;
+import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -52,7 +53,7 @@ public class AuthenticationService implements UserDetailsService {
 
         User user = (User) authentication.getPrincipal();
         Date todayDate = new Date();
-        Date expirationDate = new Date(todayDate.getTime() + Long.parseLong(expiration));
+        Date expirationDate = new Date(todayDate.getTime() + Long.parseLong(this.expiration));
 
         return Jwts.builder()
                 .setIssuer("Camping Fire API")
@@ -61,6 +62,34 @@ public class AuthenticationService implements UserDetailsService {
                 .setExpiration(expirationDate)
                 .signWith(SignatureAlgorithm.HS256, secret)
                 .compact();
+
+    }
+
+    public boolean isValidToken(String token) {
+
+        try {
+
+            Jwts.parser()
+                    .setSigningKey(this.secret)
+                    .parseClaimsJws(token);
+
+            return true;
+
+        } catch (Exception e) {
+
+            return false;
+
+        }
+
+    }
+
+    public Long getUserId(String token) {
+
+        Claims claims = Jwts.parser()
+                .setSigningKey(this.secret)
+                .parseClaimsJws(token).getBody();
+
+        return Long.parseLong(claims.getSubject());
 
     }
 

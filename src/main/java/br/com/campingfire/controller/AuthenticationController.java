@@ -1,7 +1,7 @@
 package br.com.campingfire.controller;
 
-import br.com.campingfire.request.LoginRequest;
-import br.com.campingfire.response.TokenResponse;
+import br.com.campingfire.request.AuthenticationRequest;
+import br.com.campingfire.response.AuthenticationResponse;
 import br.com.campingfire.service.AuthenticationService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,24 +18,25 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.validation.Valid;
 
 @RestController
-@RequiredArgsConstructor(onConstructor = @__(@Autowired))
 @RequestMapping("/auth")
 public class AuthenticationController {
 
+    @Autowired
     private AuthenticationManager authManager;
 
+    @Autowired
     private AuthenticationService authenticationService;
 
     @PostMapping
-    public ResponseEntity<TokenResponse> authenticate(@RequestBody @Valid LoginRequest loginRequest) {
+    public ResponseEntity<AuthenticationResponse> authenticate(@RequestBody @Valid AuthenticationRequest authenticationRequest) {
 
-        UsernamePasswordAuthenticationToken loginData = loginRequest.generateAuthenticationToken();
+        UsernamePasswordAuthenticationToken loginData = authenticationRequest.generateAuthenticationToken();
 
         try {
 
             Authentication authentication = authManager.authenticate(loginData);
             String token = authenticationService.generateToken(authentication);
-            return ResponseEntity.ok(new TokenResponse(token, "Bearer"));
+            return ResponseEntity.ok(new AuthenticationResponse(token, "Bearer"));
 
         } catch (AuthenticationException e) {
 
