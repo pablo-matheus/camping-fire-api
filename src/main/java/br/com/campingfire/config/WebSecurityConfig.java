@@ -3,7 +3,6 @@ package br.com.campingfire.config;
 import br.com.campingfire.filter.AuthenticationRequestFilter;
 import br.com.campingfire.repository.UserRepository;
 import br.com.campingfire.service.AuthenticationService;
-import br.com.campingfire.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -23,7 +22,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @Configuration
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
 @EnableWebSecurity
-public class SecurityConfig extends WebSecurityConfigurerAdapter {
+public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     private final AuthenticationService authenticationService;
 
@@ -53,8 +52,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
     @Override
-    public void configure(WebSecurity web) throws Exception {
+    public void configure(WebSecurity web) {
 
+        //TODO Permit only ADMIN role to access Swagger-UI
         web.ignoring().antMatchers(
                 "/**.html",
                 "/v2/api-docs",
