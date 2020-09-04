@@ -28,6 +28,8 @@ public class UserController {
     private final UserService userService;
 
     //TODO Improve validation messages in response JSON
+    //TODO Add status (Inactive account, active account, waiting approval)
+    //TODO Register user role when submit a user
 
     @ApiOperation("Retrieve User List")
     @GetMapping

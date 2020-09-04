@@ -31,14 +31,13 @@ public class SwaggerConfig {
                 .apis(RequestHandlerSelectors.basePackage("br.com.campingfire.controller"))
                 .paths(PathSelectors.any())
                 .build()
-                .globalOperationParameters(Arrays.asList(
-                        new ParameterBuilder()
-                                .name("Authorization")
-                                .description("JWT Header")
-                                .modelRef(new ModelRef("string"))
-                                .parameterType("header")
-                                .required(false)
-                                .build()))
+                .globalOperationParameters(Arrays.asList(new ParameterBuilder()
+                        .name("Authorization")
+                        .description("JWT Header")
+                        .modelRef(new ModelRef("string"))
+                        .parameterType("header")
+                        .required(false)
+                        .build()))
                 .apiInfo(this.apiInfo());
 
     }

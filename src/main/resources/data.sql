@@ -1,11 +1,11 @@
 INSERT INTO users (name, email, password)
-VALUES ('admin', 'admin', 'admin'); -- password 'admin'
+VALUES ('Pablo', 'pablo@campingfire.com', '$2a$10$h1/7nEkT/zubSL4DY.1fEOiVX57DXMRYQiJ37Eby12SWNmGhspP.a'); -- password 'admin'
 
 INSERT INTO users (name, email, password)
 VALUES ('Marcos', 'marcos@email.com', '$2a$10$C1q4jBhTYRVgQMxHl9sgHOfwxkslGA4LPp1OmOmwf9UkLdC1ddXWC'); -- password 'marcos12'
 
 INSERT INTO users (name, email, password)
-VALUES ('José', 'jose@email.com', '123jose'); -- password '123jose'
+VALUES ('José', 'jose@email.com', '$2a$10$wkCbpmPVH6uFXLDRMnjfguRQia24oXJqVZaJFBakMIYi7ogAWmZ3.'); -- password '123jose'
 
 
 INSERT INTO campings (name, state, city, address, description, contact, id_user)
@@ -19,13 +19,13 @@ VALUES ('Acampamento Areia', 'SP', 'Santos', 'Praia Grande', 'Dunas de areia', 1
 
 
 INSERT INTO images (name, url, id_camping)
-VALUES ('Business-HQ.jpg', 'https://www.googleapis.com/download/storage/v1/b/camping-fire/o/Business-HQ.jpg?generation=1598925247898644&alt=media', 1);
+VALUES ('20200903_1029000000_1c.jpg', 'https://www.googleapis.com/download/storage/v1/b/camping-fire/o/20200903_1029000000_1c.jpg?generation=1599245464194045&alt=media', 1);
 
 INSERT INTO images (name, url, id_camping)
-VALUES ('Business-HQ.jpg', 'https://www.googleapis.com/download/storage/v1/b/camping-fire/o/Business-HQ.jpg?generation=1598925247898644&alt=media', 2);
+VALUES ('20200903_1030000000_2c', 'https://www.googleapis.com/download/storage/v1/b/camping-fire/o/20200903_1030000000_2c.jpg?generation=1599245592361993&alt=media', 2);
 
 INSERT INTO images (name, url, id_camping)
-VALUES ('Business-HQ.jpg', 'https://www.googleapis.com/download/storage/v1/b/camping-fire/o/Business-HQ.jpg?generation=1598925247898644&alt=media', 3);
+VALUES ('20200903_1030010000_3c.jpg', 'https://www.googleapis.com/download/storage/v1/b/camping-fire/o/20200903_1030010000_3c.jpg?generation=1599245689852169&alt=media', 3);
 
 
 INSERT INTO roles (name)

@@ -3,7 +3,6 @@ package br.com.campingfire.controller;
 import br.com.campingfire.request.AuthenticationRequest;
 import br.com.campingfire.response.AuthenticationResponse;
 import br.com.campingfire.service.AuthenticationService;
-import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -18,14 +17,21 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.validation.Valid;
 
 @RestController
-@RequestMapping("/auth")
+@RequestMapping("v1/auth")
 public class AuthenticationController {
 
-    @Autowired
-    private AuthenticationManager authManager;
+    private AuthenticationManager authenticationManager;
+
+    private AuthenticationService authenticationService;
 
     @Autowired
-    private AuthenticationService authenticationService;
+    public AuthenticationController(
+            AuthenticationManager authenticationManager, 
+            AuthenticationService authenticationService) 
+    {
+        this.authenticationManager = authenticationManager;
+        this.authenticationService = authenticationService;
+    }
 
     @PostMapping
     public ResponseEntity<AuthenticationResponse> authenticate(@RequestBody @Valid AuthenticationRequest authenticationRequest) {
@@ -34,7 +40,7 @@ public class AuthenticationController {
 
         try {
 
-            Authentication authentication = authManager.authenticate(loginData);
+            Authentication authentication = authenticationManager.authenticate(loginData);
             String token = authenticationService.generateToken(authentication);
             return ResponseEntity.ok(new AuthenticationResponse(token, "Bearer"));
 
