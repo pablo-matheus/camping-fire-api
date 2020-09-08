@@ -24,6 +24,8 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
+    //TODO Deactivate authentication when using dev or test profiles
+
     private final AuthenticationService authenticationService;
 
     private final UserRepository userRepository;

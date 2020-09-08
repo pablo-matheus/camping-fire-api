@@ -3,7 +3,6 @@ package br.com.campingfire.filter;
 import br.com.campingfire.model.User;
 import br.com.campingfire.repository.UserRepository;
 import br.com.campingfire.service.AuthenticationService;
-import br.com.campingfire.service.UserService;
 import lombok.AllArgsConstructor;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
