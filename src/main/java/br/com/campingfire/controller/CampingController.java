@@ -11,6 +11,9 @@ import br.com.campingfire.service.ImageService;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -38,15 +41,17 @@ public class CampingController {
     @GetMapping
     public ResponseEntity<List<CampingResponse>> listAll(
             @RequestParam(required = false) State state,
-            @RequestParam(required = false) String city)
+            @RequestParam(required = false) String city,
+            @PageableDefault(sort = "id", direction = Sort.Direction.DESC, size = 500) Pageable pageable)
     {
 
         //TODO Refactor conditionals
         //TODO Remove imageURL and imageService
+        //TODO Sort state and city by Pageable?
 
         if (state != null && city != null) {
 
-            List<CampingResponse> campingList = campingService.findAllByStateAndCity(state, city)
+            List<CampingResponse> campingList = campingService.findAllByStateAndCity(state, city, pageable)
                     .stream()
                     .map(CampingResponse::new)
                     .collect(Collectors.toList());
@@ -58,7 +63,7 @@ public class CampingController {
 
         if (state != null) {
 
-            List<CampingResponse> campingList = campingService.findAllByState(state)
+            List<CampingResponse> campingList = campingService.findAllByState(state, pageable)
                     .stream()
                     .map(CampingResponse::new)
                     .collect(Collectors.toList());
@@ -70,7 +75,7 @@ public class CampingController {
 
         if (city != null) {
 
-            List<CampingResponse> campingList = campingService.findAllByCity(city)
+            List<CampingResponse> campingList = campingService.findAllByCity(city, pageable)
                     .stream()
                     .map(CampingResponse::new)
                     .collect(Collectors.toList());
@@ -80,7 +85,7 @@ public class CampingController {
 
         }
 
-        List<CampingResponse> campingList = campingService.findAll()
+        List<CampingResponse> campingList = campingService.findAll(pageable)
                 .stream()
                 .map(CampingResponse::new)
                 .collect(Collectors.toList());

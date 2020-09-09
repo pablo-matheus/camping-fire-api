@@ -7,9 +7,9 @@ import br.com.campingfire.model.Camping;
 import br.com.campingfire.repository.CampingRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 @Service
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
@@ -21,27 +21,27 @@ public class CampingService {
 
     //TODO Change Camping JPA Object to CampingDTO
 
-    public List<Camping> findAll() {
+    public Page<Camping> findAll(Pageable pageable) {
 
-        return campingRepository.findAll();
-
-    }
-
-    public List<Camping> findAllByState(State state) {
-
-        return campingRepository.findAllByState(state);
+        return campingRepository.findAll(pageable);
 
     }
 
-    public List<Camping> findAllByCity(String city) {
+    public Page<Camping> findAllByState(State state, Pageable pageable) {
 
-        return campingRepository.findAllByCity(city);
+        return campingRepository.findAllByState(state, pageable);
 
     }
 
-    public List<Camping> findAllByStateAndCity(State state, String city) {
+    public Page<Camping> findAllByCity(String city, Pageable pageable) {
 
-        return campingRepository.findAllByStateAndCity(state, city);
+        return campingRepository.findAllByCity(city, pageable);
+
+    }
+
+    public Page<Camping> findAllByStateAndCity(State state, String city, Pageable pageable) {
+
+        return campingRepository.findAllByStateAndCity(state, city, pageable);
 
     }
 

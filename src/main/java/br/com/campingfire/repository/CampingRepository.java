@@ -2,24 +2,26 @@ package br.com.campingfire.repository;
 
 import br.com.campingfire.enums.State;
 import br.com.campingfire.model.Camping;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-
-import java.util.List;
 
 @Repository
 public interface CampingRepository extends JpaRepository<Camping, Long> {
 
+    //TODO Change Page return to List or Slice?
+
     /** Query to find all camps searching by state */
-    List<Camping> findAllByState(State state);
+    Page<Camping> findAllByState(State state, Pageable pageable);
 
     /** Query to find all camps searching by city */
-    List<Camping> findAllByCity(String city);
+    Page<Camping> findAllByCity(String city, Pageable pageable);
 
     /** Query to find all camps searching by state and city */
-    List<Camping> findAllByStateAndCity(State state, String city);
+    Page<Camping> findAllByStateAndCity(State state, String city, Pageable pageable);
 
     /** Query to find all camps of an user */
-    List<Camping> findAllByUserId(Long id);
+    Page<Camping> findAllByUserId(Long id, Pageable pageable);
 
 }
