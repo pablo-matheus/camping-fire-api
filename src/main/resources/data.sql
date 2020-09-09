@@ -15,7 +15,13 @@ INSERT INTO campings (name, state, city, address, description, contact, id_user)
 VALUES ('Acampamento Montanha', 'RJ', 'Parati', 'Tenente José Augusto Mendes Peixoto, 1500', 'Montanha', 11987656532, 1);
 
 INSERT INTO campings (name, state, city, address, description, contact, id_user)
+VALUES ('Acampamento Floresta II', 'BA', 'Parati', 'Rua Paula Vieira, 987', 'Floresta', 1198326566, 1);
+
+INSERT INTO campings (name, state, city, address, description, contact, id_user)
 VALUES ('Acampamento Areia', 'SP', 'Santos', 'Praia Grande', 'Dunas de areia', 11911156532, 2);
+
+INSERT INTO campings (name, state, city, address, description, contact, id_user)
+VALUES ('Acampamento Maré', 'SP', 'Santos', 'Praia do Boqueirão', 'Beira da água', 119118565343, 2);
 
 
 INSERT INTO images (name, url, id_camping)
